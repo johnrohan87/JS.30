@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
 
 import { Home } from "./views/home";
+import { Clock } from "./views/clock";
 import { DrumKit } from "./views/drum_kit";
 import { Demo } from "./views/demo";
 import { Single } from "./views/single";
@@ -34,6 +35,9 @@ const Layout = () => {
 						</Route>
 						<Route exact path="/drum_kit">
 							<DrumKit />
+						</Route>
+						<Route exact path="/clock">
+							<Clock />
 						</Route>
 						<Route>
 							<h1>Not found!</h1>

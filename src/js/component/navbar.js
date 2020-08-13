@@ -14,6 +14,9 @@ export const Navbar = () => {
 				<Link to="/drum_kit">
 					<button className="btn btn-primary">Drum Kit</button>
 				</Link>
+				<Link to="/clock">
+					<button className="btn btn-primary">Clock</button>
+				</Link>
 			</div>
 		</nav>
 	);

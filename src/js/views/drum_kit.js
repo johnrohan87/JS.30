@@ -41,7 +41,7 @@ export const DrumKit = () => {
 	};
 
 	return (
-		<div className="text-center mt-5">
+		<div className="text-center mt-5 drumkit">
 			<h1 className="card">Drum Kit</h1>
 			<div className="keys dflex row justify-content-around">
 				<div data-key="65" className="key">
