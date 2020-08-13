@@ -15,7 +15,7 @@ export const DrumKit = () => {
 	}
 
 	const keyDownEvent = event => {
-		console.log(event.keyCode);
+		//console.log(event.keyCode);
 		const audio = document.querySelector("audio[data-key='" + event.keyCode + "']");
 		const key = document.querySelector(".key[data-key='" + event.keyCode + "']");
 		if (!audio) return; // If no key do nothing
@@ -30,12 +30,12 @@ export const DrumKit = () => {
 				.then(_ => {
 					// Automatic playback started!
 					// Show playing UI.
-					console.log("audio played auto");
+					//console.log("audio played auto");
 				})
 				.catch(error => {
 					// Auto-play was prevented
 					// Show paused UI.
-					console.log("playback prevented", error);
+					//console.log("playback prevented", error);
 				});
 		}
 	};
