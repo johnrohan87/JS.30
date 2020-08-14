@@ -11,7 +11,7 @@ export const UpdateCssJs = () => {
 			</h2>
 
 			<div className="text-center">
-				<div className="controls">
+				<div className="controls m-2">
 					<label htmlFor="spacing">Spacing:</label>
 					<input id="spacing" type="range" name="spacing" min="10" max="200" value="10" data-sizing="px" />
 
@@ -23,7 +23,7 @@ export const UpdateCssJs = () => {
 					<input id="base" type="color" name="base" value="#ffc600" />
 				</div>
 
-				<img src="https://source.unsplash.com/7bwQXzbF6KE/800x500" />
+				<img className="img-fluid" src="https://source.unsplash.com/7bwQXzbF6KE/800x500" />
 			</div>
 		</div>
 	);

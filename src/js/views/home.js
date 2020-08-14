@@ -6,7 +6,7 @@ export const Home = () => (
 	<div className="text-center mt-5">
 		<div className="h2 text-center mt-5 bg-primary card">Java Script 30 Day Challenge!</div>
 		<div className="container-fluid">
-			<img src={JS30} />
+			<img className="img-fluid" src={JS30} />
 		</div>
 	</div>
 );
