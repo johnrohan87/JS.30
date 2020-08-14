@@ -14,6 +14,28 @@ export const DrumKit = () => {
 		this.classList.remove("playing");
 	}
 
+	const clickPlayEvent = event => {
+		const audio = document.querySelector("audio[data-key='" + event.target.getAttribute("data-key") + "']");
+		const key = document.querySelector(".key[data-key='" + event.target.getAttribute("data-key") + "']");
+		audio.currentTime = 0;
+		key.classList.add("playing");
+		var playPromise = audio.play();
+
+		if (playPromise !== undefined) {
+			playPromise
+				.then(_ => {
+					// Automatic playback started!
+					// Show playing UI.
+					//console.log("audio played auto");
+				})
+				.catch(error => {
+					// Auto-play was prevented
+					// Show paused UI.
+					//console.log("playback prevented", error);
+				});
+		}
+	};
+
 	const keyDownEvent = event => {
 		//console.log(event.keyCode);
 		const audio = document.querySelector("audio[data-key='" + event.keyCode + "']");
@@ -44,41 +66,86 @@ export const DrumKit = () => {
 		<div className="text-center mt-5 drumkit">
 			<h1 className="card">Drum Kit</h1>
 			<div className="keys dflex row justify-content-around">
-				<div data-key="65" className="key">
-					<kbd>A</kbd>
-					<span>CLAP</span>
+				<div
+					data-key="65"
+					className="key"
+					onClick={e => {
+						clickPlayEvent(e);
+					}}>
+					<kbd data-key="65">A</kbd>
+					<span data-key="65">CLAP</span>
 				</div>
-				<div data-key="83" className="key">
-					<kbd>S</kbd>
-					<span>HIHAT</span>
+				<div
+					data-key="83"
+					className="key"
+					onClick={e => {
+						clickPlayEvent(e);
+					}}>
+					<kbd data-key="83">S</kbd>
+					<span data-key="83">HIHAT</span>
 				</div>
-				<div data-key="68" className="key">
-					<kbd>D</kbd>
-					<span>KICK</span>
+				<div
+					data-key="68"
+					className="key"
+					onClick={e => {
+						clickPlayEvent(e);
+					}}>
+					<kbd data-key="68">D</kbd>
+					<span data-key="68">KICK</span>
 				</div>
-				<div data-key="70" className="key">
-					<kbd>F</kbd>
-					<span>OPENHAT</span>
+				<div
+					data-key="70"
+					className="key"
+					onClick={e => {
+						clickPlayEvent(e);
+					}}>
+					<kbd data-key="70">F</kbd>
+					<span data-key="70">OPENHAT</span>
 				</div>
-				<div data-key="71" className="key">
-					<kbd>G</kbd>
-					<span>BOOM</span>
+				<div
+					data-key="71"
+					className="key"
+					onClick={e => {
+						clickPlayEvent(e);
+					}}>
+					<kbd data-key="71">G</kbd>
+					<span data-key="71">BOOM</span>
 				</div>
-				<div data-key="72" className="key">
-					<kbd>H</kbd>
-					<span>RIDE</span>
+				<div
+					data-key="72"
+					className="key"
+					onClick={e => {
+						clickPlayEvent(e);
+					}}>
+					<kbd data-key="72">H</kbd>
+					<span data-key="72">RIDE</span>
 				</div>
-				<div data-key="74" className="key">
-					<kbd>J</kbd>
-					<span>SNARE</span>
+				<div
+					data-key="74"
+					className="key"
+					onClick={e => {
+						clickPlayEvent(e);
+					}}>
+					<kbd data-key="74">J</kbd>
+					<span data-key="74">SNARE</span>
 				</div>
-				<div data-key="75" className="key">
-					<kbd>K</kbd>
-					<span>TOM</span>
+				<div
+					data-key="75"
+					className="key"
+					onClick={e => {
+						clickPlayEvent(e);
+					}}>
+					<kbd data-key="75">K</kbd>
+					<span data-key="75">TOM</span>
 				</div>
-				<div data-key="76" className="key">
-					<kbd>L</kbd>
-					<span>TINK</span>
+				<div
+					data-key="76"
+					className="key"
+					onClick={e => {
+						clickPlayEvent(e);
+					}}>
+					<kbd data-key="76">L</kbd>
+					<span data-key="76">TINK</span>
 				</div>
 
 				<audio
