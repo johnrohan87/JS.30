@@ -10,7 +10,7 @@ export const UpdateCssJs = () => {
 	return (
 		<div className="updateBG">
 			<h2 className="text-center mt-5 bg-primary card">
-				Update CSS Variables with <span className="hl">JS</span>
+				Update CSS Variables with <span style={{ color: imgColor }}>JS</span>
 			</h2>
 
 			<div className="text-center">
