@@ -96,6 +96,9 @@ export const Navbar = () => {
 								<Link className="dropdown-item" to="/update_css_js" onClick={() => CloseMenus()}>
 									Update CSS Vairables with JS
 								</Link>
+								<Link className="dropdown-item" to="/array_cardio" onClick={() => CloseMenus()}>
+									Array Cardio
+								</Link>
 								{/*<div className="dropdown-divider" />
 								<a className="dropdown-item" href="/">
 									Something else here
