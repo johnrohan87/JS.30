@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
 
 import { Home } from "./views/home";
+import { FlexPanels } from "./views/flex_panels";
 import { ArrayCardio } from "./views/array_cardio";
 import { UpdateCssJs } from "./views/update_css_js";
 import { Clock } from "./views/clock";
@@ -46,6 +47,9 @@ const Layout = () => {
 						</Route>
 						<Route exact path="/array_cardio">
 							<ArrayCardio />
+						</Route>
+						<Route exact path="/flex_panels">
+							<FlexPanels />
 						</Route>
 						<Route>
 							<h1>Not found!</h1>

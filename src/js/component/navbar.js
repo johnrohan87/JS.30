@@ -99,6 +99,9 @@ export const Navbar = () => {
 								<Link className="dropdown-item" to="/array_cardio" onClick={() => CloseMenus()}>
 									Array Cardio
 								</Link>
+								<Link className="dropdown-item" to="/flex_panels" onClick={() => CloseMenus()}>
+									Flex Panels
+								</Link>
 								{/*<div className="dropdown-divider" />
 								<a className="dropdown-item" href="/">
 									Something else here
