@@ -7,35 +7,24 @@ export const FlexPanels = () => {
 	useEffect(() => {
 		panels = document.querySelectorAll(".panel");
 		panels.forEach(panel => panel.addEventListener("click", toggleOpen));
-		console.log(panels);
+		panels.forEach(panel => panel.addEventListener("transitionend", toggleActive));
 	}, []);
 
 	function toggleOpen() {
-		console.log(this);
-		this.target.classList.toggle("open");
+		//console.log(this);
+		this.classList.toggle("open");
 	}
-
-	const [panel1Open, setPanel1Open] = useState("");
-	const [panel2Open, setPanel2Open] = useState("");
-	const [panel3Open, setPanel3Open] = useState("");
-	const [panel4Open, setPanel4Open] = useState("");
-	const [panel5Open, setPanel5Open] = useState("");
+	function toggleActive(e) {
+		//console.log(e.propertyName);
+		e.propertyName.includes("flex") ? this.classList.toggle("open-active") : "";
+	}
 
 	return (
 		<div className="flexPanels">
 			<h2 className="text-center mt-5 bg-primary card">Flex Panels</h2>
 			<div className="text-center">
-				<div className="panels d-flex">
-					<div
-						className="panel panel1"
-						/*onClick={() => (
-							panel1Open ? setPanel1Open("") : setPanel1Open("open open-active"),
-							setPanel2Open(""),
-							setPanel3Open(""),
-							setPanel4Open(""),
-							setPanel5Open("")
-						)}*/
-					>
+				<div className="panels">
+					<div className="panel panel1">
 						<p>Hey</p>
 						<p>Let&#39;s</p>
 						<p>Dance</p>
