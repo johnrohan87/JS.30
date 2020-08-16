@@ -1,5 +1,5 @@
 {
-	"name": "react-hello-webapp",
+	"name": "Johns-JS-30-Day-Challenge",
 	"engines": {
 		"node": "10.x"
 	},
@@ -12,8 +12,8 @@
 		"deploy": "node deploy-to-github.js"
 	},
 	"author": {
-		"name": "Alejandro Sanchez",
-		"url": "http://alesanchezr.com/"
+		"name": "John Rohan",
+		"url": "https://github.com/johnrohan87"
 	},
 	"contributors": [
 		{
