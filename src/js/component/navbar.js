@@ -102,6 +102,9 @@ export const Navbar = () => {
 								<Link className="dropdown-item" to="/flex_panels" onClick={() => CloseMenus()}>
 									Flex Panels
 								</Link>
+								<Link className="dropdown-item" to="/type_ahead" onClick={() => CloseMenus()}>
+									Type Ahead
+								</Link>
 								{/*<div className="dropdown-divider" />
 								<a className="dropdown-item" href="/">
 									Something else here
