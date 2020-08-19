@@ -42,7 +42,7 @@ export const Navbar = () => {
 				</div>
 			</nav>
         */}
-			<nav className="navbar navbar-expand-lg navbar-light bg-light" key="nav">
+			<nav className="navbar navbar-expand-lg navbar-light bg-light" key="nav" style={{ zIndex: "100" }}>
 				<Link className="navbar-brand" to="/" onClick={() => CloseMenus()}>
 					Java Script 30 Day Challenge
 				</Link>
