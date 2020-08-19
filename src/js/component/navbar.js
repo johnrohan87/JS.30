@@ -24,6 +24,7 @@ export const Navbar = () => {
 		}
 		//console.log(navMenu);
 	}
+	console.log(document.state);
 	return (
 		<>
 			{/*
@@ -41,7 +42,7 @@ export const Navbar = () => {
 				</div>
 			</nav>
         */}
-			<nav className="navbar navbar-expand-lg navbar-light bg-light">
+			<nav className="navbar navbar-expand-lg navbar-light bg-light" key="nav">
 				<Link className="navbar-brand" to="/" onClick={() => CloseMenus()}>
 					Java Script 30 Day Challenge
 				</Link>
@@ -60,7 +61,7 @@ export const Navbar = () => {
 					<span className="navbar-toggler-icon" />
 				</button>
 
-				<div className={"collapse navbar-collapse " + navMenu} id="navbarSupportedContent">
+				<div className={"collapse navbar-collapse " + navMenu} id="navbarSupportedContent" key="navbar">
 					<ul className="navbar-nav mr-auto">
 						<li className="nav-item active">
 							<Link className="nav-link" to="/" onClick={() => CloseMenus()}>
@@ -86,7 +87,10 @@ export const Navbar = () => {
 								aria-expanded="false">
 								Projects List
 							</div>
-							<div className={"dropdown-menu " + navMenuDrop} aria-labelledby="navbarDropdown">
+							<div
+								className={"dropdown-menu " + navMenuDrop}
+								aria-labelledby="navbarDropdown"
+								key="navdrop">
 								<Link className="dropdown-item" to="/drum_kit" onClick={() => CloseMenus()}>
 									Drum Kit
 								</Link>
