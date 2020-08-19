@@ -61,8 +61,12 @@ export const Navbar = () => {
 					<span className="navbar-toggler-icon" />
 				</button>
 
-				<div className={"collapse navbar-collapse " + navMenu} id="navbarSupportedContent" key="navbar">
-					<ul className="navbar-nav mr-auto">
+				<div
+					className={"collapse navbar-collapse " + navMenu}
+					id="navbarSupportedContent"
+					key="navbar"
+					style={{ zIndex: "100" }}>
+					<ul className="navbar-nav mr-auto" key="navcont">
 						<li className="nav-item active">
 							<Link className="nav-link" to="/" onClick={() => CloseMenus()}>
 								Home
@@ -73,7 +77,7 @@ export const Navbar = () => {
 								Link
 							</a>
                 </li>*/}
-						<li className="nav-item dropdown">
+						<li className="nav-item dropdown" style={{ zIndex: "100" }}>
 							<div
 								onClick={() => {
 									ToggleNavBarDrop();
