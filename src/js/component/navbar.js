@@ -24,7 +24,7 @@ export const Navbar = () => {
 		}
 		//console.log(navMenu);
 	}
-	console.log(document.state);
+	//console.log(document.state);
 	return (
 		<>
 			{/*
@@ -112,6 +112,9 @@ export const Navbar = () => {
 								</Link>
 								<Link className="dropdown-item" to="/type_ahead" onClick={() => CloseMenus()}>
 									Type Ahead
+								</Link>
+								<Link className="dropdown-item" to="/html5_canvas" onClick={() => CloseMenus()}>
+									HTML5 Canvas
 								</Link>
 								{/*<div className="dropdown-divider" />
 								<a className="dropdown-item" href="/">

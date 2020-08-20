@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
 
 import { Home } from "./views/home";
+import { HTML5Canvas } from "./views/html5_canvas";
 import { TypeAhead } from "./views/type_ahead";
 import { FlexPanels } from "./views/flex_panels";
 import { ArrayCardio } from "./views/array_cardio";
@@ -54,6 +55,9 @@ const Layout = () => {
 						</Route>
 						<Route exact path="/type_ahead">
 							<TypeAhead />
+						</Route>
+						<Route exact path="/html5_canvas">
+							<HTML5Canvas />
 						</Route>
 						<Route>
 							<h1>Not found!</h1>
