@@ -30,7 +30,7 @@ export const HTML5Canvas = () => {
 		});
 		canvas.addEventListener("touchstart", e => {
 			isDrawing = true;
-			[lastX, lastY] = [e.offsetX, e.offsetY];
+			[lastX, lastY] = [e.touches[0].pageX, e.touches[0].pageY];
 		});
 
 		canvas.addEventListener("mousemove", draw);
