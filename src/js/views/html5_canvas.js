@@ -28,17 +28,13 @@ export const HTML5Canvas = () => {
 			isDrawing = true;
 			[lastX, lastY] = [e.offsetX, e.offsetY];
 		});
-		canvas.addEventListener(
-			"touchstart",
-			e => {
-				isDrawing = true;
-				[lastX, lastY] = [e.offsetX, e.offsetY];
-			},
-			{ passive: false }
-		);
+		canvas.addEventListener("touchstart", e => {
+			isDrawing = true;
+			[lastX, lastY] = [e.offsetX, e.offsetY];
+		});
 
 		canvas.addEventListener("mousemove", draw);
-		canvas.addEventListener("touchmove", draw, { passive: false });
+		canvas.addEventListener("touchmove", draw);
 		canvas.addEventListener("mouseup", () => (isDrawing = false));
 		canvas.addEventListener("touchend", () => (isDrawing = false));
 		canvas.addEventListener("mouseout", () => (isDrawing = false));
