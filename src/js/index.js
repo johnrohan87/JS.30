@@ -2,6 +2,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import $ from "jquery";
+import Konva from "konva";
 
 //include bootstrap npm library into the bundle
 import "bootstrap/dist/css/bootstrap.css";
