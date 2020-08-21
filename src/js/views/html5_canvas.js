@@ -74,7 +74,7 @@ export const HTML5Canvas = () => {
 		<div className="">
 			<h2 className="text-center mt-5 bg-primary card">HTML5 Canvas</h2>
 			<div className="text-center">
-				<canvas id="draw" width="800" height="800" />
+				<canvas id="draw" width="800" height="800" style={{ touchAction: "none" }} />
 			</div>
 		</div>
 	);
