@@ -4,11 +4,11 @@ let canvas;
 let ctx;
 
 export const HTML5Canvas = () => {
-	const [hue, setHue] = useState(0);
-	let tmpHue = Math.floor(Math.random() * 10);
+	let hue = 0;
 	let isDrawing = false;
 	let lastX = 0;
 	let lastY = 0;
+	let direction = true;
 
 	useEffect(() => {
 		canvas = document.querySelector("#draw");
@@ -21,6 +21,8 @@ export const HTML5Canvas = () => {
 		ctx.lineJoin = "round";
 		ctx.lineCap = "round";
 		ctx.lineWidth = 100;
+		//added efects --- <<<
+		ctx.globalCompositeOperation = "multiply";
 
 		canvas.addEventListener("mousedown", e => {
 			isDrawing = true;
@@ -35,21 +37,33 @@ export const HTML5Canvas = () => {
 	function draw(e) {
 		if (!isDrawing) return;
 		//console.log(e);
+		ctx.strokeStyle = "hsl(" + hue + ",100%,50%)";
+
 		ctx.beginPath();
 		ctx.moveTo(lastX, lastY);
 		ctx.lineTo(e.offsetX, e.offsetY);
+
 		ctx.stroke();
 		[lastX, lastY] = [e.offsetX, e.offsetY];
-		//setHue({ tmpHue });
-		tmpHue++;
-		//console.log("hue", hue, "tmpHue", tmpHue);
+
+		hue++;
+		hue >= 360 && (hue = 0);
+		if (ctx.lineWidth >= 100 || ctx.lineWidth <= 1) {
+			direction = !direction;
+		}
+		if (direction) {
+			ctx.lineWidth++;
+		} else {
+			ctx.lineWidth--;
+		}
+		console.log("hue", hue);
 	}
 
 	return (
 		<div className="">
 			<h2 className="text-center mt-5 bg-primary card">HTML5 Canvas</h2>
 			<div className="text-center">
-				<canvas id="draw" width="800" height="800" style={{ stroke: "hsl(" + tmpHue + ",100%,50%)" }} />
+				<canvas id="draw" width="800" height="800" />
 			</div>
 		</div>
 	);
