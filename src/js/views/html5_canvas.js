@@ -24,14 +24,14 @@ export const HTML5Canvas = () => {
 		//added efects --- <<<
 		ctx.globalCompositeOperation = "multiply";
 
-		canvas.addEventListener("mousedown", e => {
+		canvas.addEventListener("mousedown touchstart", e => {
 			isDrawing = true;
 			[lastX, lastY] = [e.offsetX, e.offsetY];
 		});
 
 		canvas.addEventListener("mousemove", draw);
-		canvas.addEventListener("mouseup", () => (isDrawing = false));
-		canvas.addEventListener("mouseout", () => (isDrawing = false));
+		canvas.addEventListener("mouseup touchend", () => (isDrawing = false));
+		canvas.addEventListener("mouseout touchend", () => (isDrawing = false));
 	}, []);
 
 	function draw(e) {
