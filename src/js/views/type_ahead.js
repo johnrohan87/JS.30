@@ -23,7 +23,7 @@ export const TypeAhead = () => {
 		searchInput.addEventListener("change", displayMatches);
 		searchInput.addEventListener("keyup", displayMatches);
 
-		console.log("finished loading", cities);
+		//console.log("finished loading", cities);
 	}, []);
 
 	function numberWithCommas(x) {
@@ -39,6 +39,10 @@ export const TypeAhead = () => {
 	}
 	function displayMatches() {
 		const matchArray = findMatches(this.value, cities);
+		if (this.value == "") {
+			setReturnHTML(null);
+			return;
+		}
 		const html = matchArray.map(place => {
 			//console.log(place);
 			const regex = new RegExp(this.value, "gi");
