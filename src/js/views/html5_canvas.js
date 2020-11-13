@@ -46,9 +46,26 @@ export const HTML5Canvas = () => {
 		//console.log(e);
 		ctx.strokeStyle = "hsl(" + hue + ",100%,50%)";
 
+		alert(
+			lastX +
+				" " +
+				lastY +
+				" " +
+				e.clientX +
+				" " +
+				e.clientY +
+				" " +
+				e.targetTouches[0].pageX +
+				" " +
+				e.targetTouches[0].pageY
+		);
 		ctx.beginPath();
 		ctx.moveTo(lastX, lastY);
 		ctx.lineTo(e.offsetX, e.offsetY);
+
+		/*alert(
+			lastX + " " + lastY + " " + e.clientX + " " + e.clientY + (e.targetTouches ? "true touch" : "false touch")
+		);*/
 
 		ctx.stroke();
 		[lastX, lastY] = [e.offsetX, e.offsetY];
