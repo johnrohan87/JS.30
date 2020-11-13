@@ -29,8 +29,9 @@ export const HTML5Canvas = () => {
 			[lastX, lastY] = [e.offsetX, e.offsetY];
 		});
 		canvas.addEventListener("touchstart", e => {
+			var rect = e.target.getBoundingClientRect();
 			isDrawing = true;
-			[lastX, lastY] = [e.touches[0].pageX, e.touches[0].pageY];
+			[lastX, lastY] = [e.touches[0].pageX - rect.left, e.touches[0].pageY - rect.top];
 		});
 
 		canvas.addEventListener("mousemove", draw);
@@ -43,32 +44,28 @@ export const HTML5Canvas = () => {
 
 	function draw(e) {
 		if (!isDrawing) return;
+		var rect = e.target.getBoundingClientRect();
 		//console.log(e);
 		ctx.strokeStyle = "hsl(" + hue + ",100%,50%)";
 
-		alert(
-			lastX +
-				" " +
-				lastY +
-				" " +
-				e.clientX +
-				" " +
-				e.clientY +
-				" " +
-				e.targetTouches[0].pageX +
-				" " +
-				e.targetTouches[0].pageY
-		);
 		ctx.beginPath();
 		ctx.moveTo(lastX, lastY);
-		ctx.lineTo(e.offsetX, e.offsetY);
+		//ctx.lineTo(e.offsetX, e.offsetY);
+		//alert(e.touches[0].pageX + " " + e.touches[0].pageY);
+		//alert(e.targetTouches[0].pageX + " " + e.targetTouches[0].pageY);
+		e.targetTouches
+			? ctx.lineTo(e.touches[0].pageX - rect.left, e.touches[0].pageY - rect.top)
+			: ctx.lineTo(e.offsetX, e.offsetY);
 
 		/*alert(
 			lastX + " " + lastY + " " + e.clientX + " " + e.clientY + (e.targetTouches ? "true touch" : "false touch")
 		);*/
 
 		ctx.stroke();
-		[lastX, lastY] = [e.offsetX, e.offsetY];
+		//[lastX, lastY] = [e.offsetX, e.offsetY];
+		e.targetTouches
+			? ([lastX, lastY] = [e.touches[0].pageX - rect.left, e.touches[0].pageY - rect.top])
+			: ([lastX, lastY] = [e.offsetX, e.offsetY]);
 
 		hue++;
 		hue >= 360 && (hue = 0);
@@ -80,7 +77,7 @@ export const HTML5Canvas = () => {
 		} else {
 			ctx.lineWidth--;
 		}
-		console.log("hue", hue);
+		//console.log("hue", hue);
 	}
 
 	return (
