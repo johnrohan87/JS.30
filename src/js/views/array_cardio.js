@@ -68,26 +68,26 @@ export const ArrayCardio = () => {
 			return true;
 		}
 	});
-	console.table(fifteen);
+	console.table(fifteen); // eslint-disable-line no-console
 
 	// Array.prototype.map()
 	// 2. Give us an array of the inventors first and last names
 	const fullNames = inventors.map(inventor => {
 		return inventor.first + " " + inventor.last;
 	});
-	console.table(fullNames);
+	console.table(fullNames); // eslint-disable-line no-console
 
 	// Array.prototype.sort()
 	// 3. Sort the inventors by birthdate, oldest to youngest
 	const ordered = inventors.sort((a, b) => (a.year > b.year ? 1 : -1));
-	console.table(ordered);
+	console.table(ordered); // eslint-disable-line no-console
 
 	// Array.prototype.reduce()
 	// 4. How many years did all the inventors live all together?
 	const totalYears = inventors.reduce((total, inventor) => {
 		return total + (inventor.passed - inventor.year);
 	}, 0);
-	console.table(totalYears);
+	console.table(totalYears); // eslint-disable-line no-console
 
 	// 5. Sort the inventors by years lived
 	const oldest = inventors.sort((a, b) => {
@@ -95,7 +95,7 @@ export const ArrayCardio = () => {
 		const nextGuy = b.passed - b.year;
 		return lastGuy > nextGuy ? -1 : 1;
 	});
-	console.table(oldest);
+	console.table(oldest); // eslint-disable-line no-console
 
 	// 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
 	// https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
@@ -117,7 +117,7 @@ export const ArrayCardio = () => {
 		const [bLast, bFirst] = nextOne.split(", ");
 		return aLast > bLast ? 1 : -1;
 	});
-	console.log(alpha);
+	console.log(alpha); // eslint-disable-line no-console
 
 	// 8. Reduce Exercise
 	// Sum up the instances of each of these
@@ -146,7 +146,7 @@ export const ArrayCardio = () => {
 
 		return obj;
 	}, {});
-	console.log(transportation);
+	console.log(transportation); // eslint-disable-line no-console
 
 	// ## Array Cardio Day 2 - // ## Array Cardio Day 2 - // ## Array Cardio Day 2 - // ## Array Cardio Day 2
 
@@ -174,27 +174,27 @@ export const ArrayCardio = () => {
 		//}
 		return currentYear - person.year >= 19;
 	});
-	console.log({ isAdult });
+	console.log({ isAdult }); // eslint-disable-line no-console
 
 	// Array.prototype.every() // is everyone 19 or older?
 	const allAdults = people2.every(person => new Date().getFullYear() - person.year >= 19);
-	console.log({ allAdults });
+	console.log({ allAdults }); // eslint-disable-line no-console
 
 	// Array.prototype.find()
 	// Find is like filter, but instead returns just the one you are looking for
 	// find the comment with the ID of 823423
 	const comment = comments.find(comment => comment.id === 823423);
-	console.log({ comment });
+	console.log({ comment }); // eslint-disable-line no-console
 
 	// Array.prototype.findIndex()
 	// Find the comment with this ID
 	// delete the comment with the ID of 823423
 	const index = comments.findIndex(comment => comment.id === 823423);
-	console.log(index);
+	console.log(index); // eslint-disable-line no-console
 
 	//comments.splice(index, 1);
 	const newComments = [...comments.splice(0, index), ...comments.splice(index + 1)];
-	console.table(newComments);
+	console.table(newComments); // eslint-disable-line no-console
 
 	return (
 		<div className="updateBG">

@@ -116,6 +116,9 @@ export const Navbar = () => {
 								<Link className="dropdown-item" to="/html5_canvas" onClick={() => CloseMenus()}>
 									HTML5 Canvas
 								</Link>
+								<Link className="dropdown-item" to="/console_tricks" onClick={() => CloseMenus()}>
+									Console Tricks
+								</Link>
 								{/*<div className="dropdown-divider" />
 								<a className="dropdown-item" href="/">
 									Something else here
