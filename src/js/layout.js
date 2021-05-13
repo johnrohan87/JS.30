@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
 
 import { Home } from "./views/home";
+import CheckMultipleCheckboxes from "./views/check_multiple_checkboxes";
 import ConsoleTricks from "./views/console_tricks";
 import { HTML5Canvas } from "./views/html5_canvas";
 import { TypeAhead } from "./views/type_ahead";
@@ -62,6 +63,9 @@ const Layout = () => {
 						</Route>
 						<Route exact path="/console_tricks">
 							<ConsoleTricks />
+						</Route>
+						<Route exact path="/check_multiple_checkboxes">
+							<CheckMultipleCheckboxes />
 						</Route>
 						<Route>
 							<h1>Not found!</h1>

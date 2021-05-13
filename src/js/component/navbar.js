@@ -119,6 +119,12 @@ export const Navbar = () => {
 								<Link className="dropdown-item" to="/console_tricks" onClick={() => CloseMenus()}>
 									Console Tricks
 								</Link>
+								<Link
+									className="dropdown-item"
+									to="/check_multiple_checkboxes"
+									onClick={() => CloseMenus()}>
+									Check Multiple Checkboxes
+								</Link>
 								{/*<div className="dropdown-divider" />
 								<a className="dropdown-item" href="/">
 									Something else here
