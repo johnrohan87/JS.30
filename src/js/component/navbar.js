@@ -125,6 +125,9 @@ export const Navbar = () => {
 									onClick={() => CloseMenus()}>
 									Check Multiple Checkboxes
 								</Link>
+								<Link className="dropdown-item" to="/custom_video_player" onClick={() => CloseMenus()}>
+									Custom Video Player
+								</Link>
 								{/*<div className="dropdown-divider" />
 								<a className="dropdown-item" href="/">
 									Something else here

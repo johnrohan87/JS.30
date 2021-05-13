@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
 
 import { Home } from "./views/home";
+import CustomVideoPlayer from "./views/custom_video_player";
 import CheckMultipleCheckboxes from "./views/check_multiple_checkboxes";
 import ConsoleTricks from "./views/console_tricks";
 import { HTML5Canvas } from "./views/html5_canvas";
@@ -66,6 +67,9 @@ const Layout = () => {
 						</Route>
 						<Route exact path="/check_multiple_checkboxes">
 							<CheckMultipleCheckboxes />
+						</Route>
+						<Route exact path="/custom_video_player">
+							<CustomVideoPlayer />
 						</Route>
 						<Route>
 							<h1>Not found!</h1>
