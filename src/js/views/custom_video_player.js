@@ -1,6 +1,7 @@
 import React, { createRef, useEffect, useState, Component } from "react";
 import PropTypes from "prop-types";
 import "../../styles/custom_video_player.scss";
+import myVideo from "../../video/652333414.mp4";
 
 export default class CustomVideoPlayer extends React.Component {
 	constructor(props) {
@@ -21,7 +22,7 @@ export default class CustomVideoPlayer extends React.Component {
 			<div className="updateBG">
 				<h2 className="text-center mt-5 bg-primary card">Custom Video Player</h2>
 				<div className="player">
-					<video className="player__video viewer" src="../../video/652333414.mp4" />
+					<video className="player__video viewer" src={myVideo} />
 
 					<div className="player__controls">
 						<div className="progress">
