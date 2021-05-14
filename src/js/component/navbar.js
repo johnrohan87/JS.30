@@ -128,6 +128,12 @@ export const Navbar = () => {
 								<Link className="dropdown-item" to="/custom_video_player" onClick={() => CloseMenus()}>
 									Custom Video Player
 								</Link>
+								<Link
+									className="dropdown-item"
+									to="/key_sequence_detection"
+									onClick={() => CloseMenus()}>
+									Key Sequence Detection
+								</Link>
 								{/*<div className="dropdown-divider" />
 								<a className="dropdown-item" href="/">
 									Something else here

@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
 
 import { Home } from "./views/home";
+import KeySequenceDetection from "./views/key_sequence_detection";
 import CustomVideoPlayer from "./views/custom_video_player";
 import CheckMultipleCheckboxes from "./views/check_multiple_checkboxes";
 import ConsoleTricks from "./views/console_tricks";
@@ -70,6 +71,9 @@ const Layout = () => {
 						</Route>
 						<Route exact path="/custom_video_player">
 							<CustomVideoPlayer />
+						</Route>
+						<Route exact path="/key_sequence_detection">
+							<KeySequenceDetection />
 						</Route>
 						<Route>
 							<h1>Not found!</h1>
