@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
 
 import { Home } from "./views/home";
+import SlideInOnScroll from "./views/slide_in_on_scroll";
 import KeySequenceDetection from "./views/key_sequence_detection";
 import CustomVideoPlayer from "./views/custom_video_player";
 import CheckMultipleCheckboxes from "./views/check_multiple_checkboxes";
@@ -74,6 +75,9 @@ const Layout = () => {
 						</Route>
 						<Route exact path="/key_sequence_detection">
 							<KeySequenceDetection />
+						</Route>
+						<Route exact path="/slide_in_on_scroll">
+							<SlideInOnScroll />
 						</Route>
 						<Route>
 							<h1>Not found!</h1>

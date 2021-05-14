@@ -134,6 +134,9 @@ export const Navbar = () => {
 									onClick={() => CloseMenus()}>
 									Key Sequence Detection
 								</Link>
+								<Link className="dropdown-item" to="/slide_in_on_scroll" onClick={() => CloseMenus()}>
+									Slide In On Scroll
+								</Link>
 								{/*<div className="dropdown-divider" />
 								<a className="dropdown-item" href="/">
 									Something else here
