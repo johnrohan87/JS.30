@@ -15,7 +15,8 @@ export default class CustomVideoPlayer extends React.Component {
 			volume: 1,
 			playbackRate: 1,
 			position: 0,
-			duration: 0
+			duration: 0,
+			percent: 0
 		};
 		this.progress = React.createRef();
 		this.progressFilled = React.createRef();
@@ -26,30 +27,28 @@ export default class CustomVideoPlayer extends React.Component {
 		//this.ranges = this.handleProgressFilled.bind(this);
 	}
 	componentDidMount(props) {
-		const videoPlayer = this.video;
+		//const videoPlayer = this.video;
 		setInterval(() => {
-			this.setState({ position: videoPlayer.currentTime });
+			const percent = (this.video.currentTime / this.video.duration) * 100;
+			this.setState({ position: this.video.currentTime, duration: this.video.duration, percent: percent });
+			//console.log(this.state);
 		}, 1000);
-		this.setState({ duration: videoPlayer.duration, position: videoPlayer.position });
-		console.log(this.state);
 	}
 
 	handlePlayer(e) {
-		console.log(e);
+		//console.log(e);
 	}
 	handlevideo(e) {
-		console.log(e);
+		//console.log(e);
 	}
-	handleProgress(e) {
-		const videoPlayer = this.video;
-		const percent = (videoPlayer.currentTime / videoPlayer.duration) * 100;
-		console.log(percent);
-
-		//progressFilled.style.flexBasis = `${percent}`;
+	handleProgress() {
+		const percent = (this.video.currentTime / this.video.duration) * 100;
+		this.setState({ progress: percent });
+		//console.log(this.state.progress);
 	}
 	togglePlay() {
 		const videoPlayer = this.video;
-		console.log(videoPlayer.duration);
+		//console.log(videoPlayer.duration);
 		if (videoPlayer.paused) {
 			videoPlayer.play();
 			this.setState({ videoPaused: false });
@@ -61,12 +60,18 @@ export default class CustomVideoPlayer extends React.Component {
 	handleRangeUpdate(e) {
 		if (e.target.name === "playbackRate") {
 			this.setState({ playbackRate: e.target.value });
+			//console.log(this.state.playbackRate);
 		}
 		if (e.target.name === "volume") {
 			this.setState({ volume: e.target.value });
+			//console.log(this.state.volume);
 		}
 		//console.log(e.target.name);
 		//console.log(this.state);
+	}
+	scrub(e) {
+		//console.log(e);
+		this.video.currentTime = e;
 	}
 
 	render() {
@@ -86,11 +91,25 @@ export default class CustomVideoPlayer extends React.Component {
 							this.togglePlay();
 						}}
 						onPlaying={() => this.handleProgress()}
+						playbackRate={this.state.playbackRate}
+						volume={this.state.volume}
 					/>
 
 					<div className="player__controls">
-						<div className="progress" ref={el => (this.progress = el)}>
-							<div className="progress__filled" ref={el => (this.progressFilled = el)} />
+						<div
+							className="progress"
+							ref={el => (this.progress = el)}
+							onClick={e => {
+								this.scrub((e.nativeEvent.offsetX / this.progress.offsetWidth) * this.video.duration);
+							}}
+							onChange={e => {
+								this.scrub((e.nativeEvent.offsetX / this.progress.offsetWidth) * this.video.duration);
+							}}>
+							<div
+								className="progress__filled"
+								ref={el => (this.progressFilled = el)}
+								style={{ flexBasis: this.state.percent + "%" }}
+							/>
 						</div>
 						<button
 							className="player__button toggle"
