@@ -137,6 +137,12 @@ export const Navbar = () => {
 								<Link className="dropdown-item" to="/slide_in_on_scroll" onClick={() => CloseMenus()}>
 									Slide In On Scroll
 								</Link>
+								<Link
+									className="dropdown-item"
+									to="/local_storage_and_event_delegation"
+									onClick={() => CloseMenus()}>
+									Local Storage And Event Delegation
+								</Link>
 								{/*<div className="dropdown-divider" />
 								<a className="dropdown-item" href="/">
 									Something else here

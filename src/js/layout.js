@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
 
 import { Home } from "./views/home";
+import LocalStorageAndEventDelegation from "./views/local_storage_and_event_delegation";
 import SlideInOnScroll from "./views/slide_in_on_scroll";
 import KeySequenceDetection from "./views/key_sequence_detection";
 import CustomVideoPlayer from "./views/custom_video_player";
@@ -78,6 +79,9 @@ const Layout = () => {
 						</Route>
 						<Route exact path="/slide_in_on_scroll">
 							<SlideInOnScroll />
+						</Route>
+						<Route exact path="/local_storage_and_event_delegation">
+							<LocalStorageAndEventDelegation />
 						</Route>
 						<Route>
 							<h1>Not found!</h1>

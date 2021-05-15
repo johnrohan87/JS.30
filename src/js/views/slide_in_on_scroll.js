@@ -35,7 +35,7 @@ export default class SlideInOnScroll extends React.Component {
 
 			if (isHalfShown && isNotScrolledPast) {
 				//console.log(isHalfShown, isNotScrolledPast);
-				console.log(image, key);
+				//console.log(image, key);
 				if (!image.className.includes(" active")) {
 					image.className = image.className.concat(" active");
 				}
