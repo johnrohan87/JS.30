@@ -11,57 +11,42 @@ export default class LocalStorageAndEventDelegation extends React.Component {
 		//this.player = this.handlePlayer.bind(this);
 		this.sliderImages = [];
 		this.state = {
-			currentKey: null,
-			elements: null,
-			imageActive: []
+			add_items: null,
+			items_list: null,
+			items: []
 		};
 	}
 	componentDidMount(props) {
-		const sliderImages = document.querySelectorAll(".slide-in");
-		//console.log(DOMNode);
-		this.setState({ elements: sliderImages });
-		window.addEventListener("scroll", this.debounce(() => this.checkSlide()));
+		const addItems = document.querySelector(".add-items");
+		const itemsList = document.querySelector(".plates");
+		this.setState({ add_items: addItems, items_list: itemsList });
+		console.log(addItems, itemsList);
+		//addItems.addEventListener("submit", ()=>{});
 	}
-	checkSlide() {
-		this.state.elements.forEach((image, key) => {
-			//halfway through the image
-			const slideInAt = window.scrollY + window.innerHeight - image.height / 2;
-			//console.log(slideInAt);
-
-			//bottom of the image
-			const imageBottom = image.offsetTop + image.height;
-
-			const isHalfShown = slideInAt > image.offsetTop;
-			const isNotScrolledPast = window.scrollY < imageBottom;
-
-			if (isHalfShown && isNotScrolledPast) {
-				//console.log(isHalfShown, isNotScrolledPast);
-				console.log(image, key);
-				if (!image.className.includes(" active")) {
-					image.className = image.className.concat(" active");
-				}
-			} else {
-				//console.log(isHalfShown, isNotScrolledPast);
-				if (image.className.includes("active")) {
-					image.className = image.className.replace(" active", "");
-				}
-			}
-		});
-	}
-	debounce(func, wait = 20, immediate = true) {
-		var timeout;
-		return function() {
-			var context = this,
-				args = arguments;
-			var later = function() {
-				timeout = null;
-				if (!immediate) func.apply(context, args);
-			};
-			var callNow = immediate && !timeout;
-			clearTimeout(timeout);
-			timeout = setTimeout(later, wait);
-			if (callNow) func.apply(context, args);
+	addItem(e) {
+		const text = document.querySelector("[name=item]");
+		const item = {
+			text: text.value,
+			done: false
 		};
+		//console.log(item);
+		text.value = "";
+		this.setState((state, item) => {
+			items: [...state.items, item];
+		});
+		console.log(this.state);
+		//this.populateList(this.state.items, this.state.items_list);
+	}
+	populateList(plates = [], platesList) {
+		platesList.innerHTML = plates
+			.map((plate, i) => {
+				return `
+			<li>
+			<label for="">${plate.text}</label>
+			</li>
+			`;
+			})
+			.join("");
 	}
 
 	render() {
@@ -77,10 +62,20 @@ export default class LocalStorageAndEventDelegation extends React.Component {
 					<p />
 					<ul className="plates">
 						<li>Loading Tapas...</li>
+						{this.state.items.forEach(item => {
+							return <label>{item.text}</label>;
+						})}
 					</ul>
 					<form className="add-items">
 						<input type="text" name="item" placeholder="Item Name" required />
-						<input type="submit" value="+ Add Item" />
+						<input
+							type="submit"
+							value="+ Add Item"
+							onClick={e => {
+								e.preventDefault();
+								this.addItem(e);
+							}}
+						/>
 					</form>
 				</div>
 			</div>
