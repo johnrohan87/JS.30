@@ -85,7 +85,7 @@ export default class CustomVideoPlayer extends React.Component {
 				<div className="player" ref={this.player}>
 					<video
 						className="player__video player"
-						src={"https://github.com/johnrohan87/JS.30/blob/master/src/video/652333414.mp4"}
+						src={"https://github.com/johnrohan87/JS.30/raw/master/src/video/652333414.mp4"}
 						ref={el => (this.video = el)}
 						onClick={() => {
 							this.togglePlay();
