@@ -88,7 +88,7 @@ export default class CustomVideoPlayer extends React.Component {
 
 		return (
 			<div className="updateBG">
-				<h2 className="text-center mt-5 bg-primary card">Custom Video Player {this.state.position}</h2>
+				<h2 className="text-center mt-5 bg-primary card">Custom Video Player</h2>
 				<div className="player" ref={this.player}>
 					<video
 						className="player__video player"
@@ -166,6 +166,7 @@ export default class CustomVideoPlayer extends React.Component {
 					</div>
 				</div>
 				<div>
+					<div>position = {this.state.position}</div>
 					<div>volume = {volume}</div>
 					<div>playback rate = {playbackRate}</div>
 				</div>
