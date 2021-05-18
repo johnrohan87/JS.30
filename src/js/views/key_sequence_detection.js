@@ -23,7 +23,11 @@ export default class KeySequenceDetection extends React.Component {
 			let tmpState = this.state.pressed;
 			tmpState.splice(-this.state.secretCode - 1, tmpState.length - this.state.secretCode.length);
 			this.setState({ pressed: tmpState, currentKeySet: tmpState.join("") });
-			if (tmpState.join("").includes(this.state.secretCode)) this.setState({ message: "we have a winner" });
+			if (tmpState.join("").includes(this.state.secretCode)) {
+				this.setState({ message: "we have a winner" });
+			} else {
+				this.setState({ message: "" });
+			}
 			//console.log(this.state.pressed);
 		});
 	}
@@ -36,6 +40,7 @@ export default class KeySequenceDetection extends React.Component {
 		return (
 			<div className="updateBG">
 				<h2 className="text-center mt-5 bg-primary card">Key Sequence Detection</h2>
+				<div>HINT: whats my name?</div>
 				<div>The last key pressed {this.state.currentKey}</div>
 				<div>Key Combo {this.state.currentKeySet}</div>
 				<div>{this.state.message}</div>

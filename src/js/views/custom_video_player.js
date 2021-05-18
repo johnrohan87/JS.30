@@ -85,6 +85,9 @@ export default class CustomVideoPlayer extends React.Component {
 		// eslint-disable-line no-console
 		const { volume } = this.state;
 		const { playbackRate } = this.state;
+		var date = new Date(null);
+		date.setSeconds(Math.round(this.state.position)); // specify value for SECONDS here
+		var result = date.toISOString().substr(11, 8);
 
 		return (
 			<div className="updateBG">
@@ -166,7 +169,7 @@ export default class CustomVideoPlayer extends React.Component {
 					</div>
 				</div>
 				<div>
-					<div>position = {this.state.position}</div>
+					<div>position = {result}</div>
 					<div>volume = {volume}</div>
 					<div>playback rate = {playbackRate}</div>
 				</div>
@@ -178,123 +181,3 @@ export default class CustomVideoPlayer extends React.Component {
 CustomVideoPlayer.propTypes = {
 	boxesSelected: PropTypes.string
 };
-
-/** 
-import React, { useRef, createRef, useEffect, useState, Component } from "react";
-import ReactDOM from "react-dom";
-import PropTypes from "prop-types";
-import "../../styles/custom_video_player.scss";
-import myVideo from "../../video/652333414.mp4";
-import { Redirect, withRouter } from "react-router-dom/cjs/react-router-dom.min";
-
-export const CustomVideoPlayer = () => {
-	const [playing, setPlaying] = useState(false);
-	const [position, setPosition] = useState(0);
-	const [volume, setVolume] = useState(0);
-	const [playbackRate, setPlaybackRate] = useState(1);
-	const video = useRef();
-
-	const togglePlay = e => {
-		setPlaying(!playing);
-		setPosition(video.current.currentTime);
-		//console.log(video.current);
-		//playing ? video.current.play() : video.current.pause();
-		console.log(position);
-	};
-
-	useEffect(
-		() => {
-			if (playing) {
-				video.current.play();
-				setPlaying(true);
-			} else {
-				video.current.pause();
-				setPlaying(false);
-			}
-			console.log(playing);
-		},
-		[playing]
-	);
-	useEffect(
-		() => {
-			setPosition(video.current.currentTime);
-			console.log(position);
-		},
-		[position]
-	);
-
-	return (
-		<div className="updateBG">
-			<h2 className="text-center mt-5 bg-primary card">Custom Video Player</h2>
-			<div className="player">
-				<video
-					className="player__video player"
-					src={myVideo}
-					ref={video}
-					playing={playing}
-					onClick={e => {
-						togglePlay(e);
-					}}
-				/>
-
-				<div className="player__controls">
-					<div className="progress">
-						<div className="progress__filled" />
-					</div>
-					<button
-						className="player__button toggle"
-						title="Toggle Play"
-						onClick={e => {
-							togglePlay(e);
-						}}>
-						{playing ? "▌▌" : "►"}
-					</button>
-					<input
-						type="range"
-						name="volume"
-						className="player__slider"
-						min="0"
-						max="1"
-						step="0.05"
-						value={volume}
-						onChange={e => {
-							setVolume(e.target.value);
-						}}
-					/>
-					<input
-						type="range"
-						name="playbackRate"
-						className="player__slider"
-						min="0.5"
-						max="2"
-						step="0.1"
-						value={playbackRate}
-						onChange={e => {
-							setPlaybackRate(e.target.value);
-						}}
-					/>
-					<button
-						data-skip="-10"
-						className="player__button"
-						onClick={() => {
-							video.current.currentTime += -10;
-						}}>
-						« 10s
-					</button>
-					<button
-						data-skip="25"
-						className="player__button"
-						onClick={() => {
-							video.current.currentTime += +25;
-						}}>
-						25s »
-					</button>
-				</div>
-			</div>
-		</div>
-	);
-};
-
-export default CustomVideoPlayer;
-
-*/
