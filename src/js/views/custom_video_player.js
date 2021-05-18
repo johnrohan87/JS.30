@@ -58,12 +58,19 @@ export default class CustomVideoPlayer extends React.Component {
 		}
 	}
 	handleRangeUpdate(e) {
+		let tmpValue = e.target.value;
 		if (e.target.name === "playbackRate") {
-			this.setState({ playbackRate: e.target.value });
+			this.setState(() => ({
+				playbackRate: tmpValue
+			}));
+			this.video.playbackRate = tmpValue;
 			//console.log(this.state.playbackRate);
 		}
 		if (e.target.name === "volume") {
-			this.setState({ volume: e.target.value });
+			this.setState(() => ({
+				volume: tmpValue
+			}));
+			this.video.volume = tmpValue;
 			//console.log(this.state.volume);
 		}
 		//console.log(e.target.name);
@@ -91,8 +98,8 @@ export default class CustomVideoPlayer extends React.Component {
 							this.togglePlay();
 						}}
 						onPlaying={() => this.handleProgress()}
-						playbackRate={this.state.playbackRate}
-						volume={this.state.volume}
+						playbackRate={playbackRate}
+						volume={volume}
 						type="video/mp4"
 					/>
 
@@ -128,7 +135,7 @@ export default class CustomVideoPlayer extends React.Component {
 							max="1"
 							step="0.05"
 							value={volume}
-							onChange={this.handleRangeUpdate.bind(this)}
+							onChange={e => this.handleRangeUpdate(e)}
 						/>
 						<input
 							type="range"
@@ -138,7 +145,7 @@ export default class CustomVideoPlayer extends React.Component {
 							max="2"
 							step="0.1"
 							value={playbackRate}
-							onChange={this.handleRangeUpdate.bind(this)}
+							onChange={e => this.handleRangeUpdate(e)}
 						/>
 						<button
 							data-skip="-10"
@@ -157,6 +164,10 @@ export default class CustomVideoPlayer extends React.Component {
 							25s »
 						</button>
 					</div>
+				</div>
+				<div>
+					<div>volume = {volume}</div>
+					<div>playback rate = {playbackRate}</div>
 				</div>
 			</div>
 		);
