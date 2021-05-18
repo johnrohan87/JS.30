@@ -93,6 +93,7 @@ export default class CustomVideoPlayer extends React.Component {
 						onPlaying={() => this.handleProgress()}
 						playbackRate={this.state.playbackRate}
 						volume={this.state.volume}
+						type="video/mp4"
 					/>
 
 					<div className="player__controls">
