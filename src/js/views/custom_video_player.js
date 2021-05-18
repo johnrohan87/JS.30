@@ -118,7 +118,7 @@ export default class CustomVideoPlayer extends React.Component {
 							onClick={e => {
 								this.togglePlay(e);
 							}}>
-							{this.state.videoPaused ? "▌▌" : "►"}
+							{this.state.videoPaused ? "►" : "▌▌"}
 						</button>
 						<input
 							type="range"
