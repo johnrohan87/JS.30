@@ -2,7 +2,7 @@ import React, { createRef, useEffect, useState, Component } from "react";
 import ReactDOM from "react-dom";
 import PropTypes from "prop-types";
 import "../../styles/custom_video_player.scss";
-import myVideo from "../../video/652333414.mp4";
+import myVideo from "https://github.com/johnrohan87/JS.30/blob/master/src/video/652333414.mp4?raw=true";
 import { Redirect, withRouter } from "react-router-dom/cjs/react-router-dom.min";
 
 export default class CustomVideoPlayer extends React.Component {
