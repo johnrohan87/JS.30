@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import "../../styles/local_storage_and_event_delegation.scss";
 import { Redirect, withRouter } from "react-router-dom/cjs/react-router-dom.min";
 import ohlala from "../../img/oh-la-la.jpeg";
+import { Label } from "react-konva";
 
 export default class LocalStorageAndEventDelegation extends React.Component {
 	constructor(props) {
@@ -19,38 +20,37 @@ export default class LocalStorageAndEventDelegation extends React.Component {
 	componentDidMount(props) {
 		const addItems = document.querySelector(".add-items");
 		const itemsList = document.querySelector(".plates");
-		this.setState({ add_items: addItems, items_list: itemsList });
+		this.setState(() => ({ add_items: addItems, items_list: itemsList }));
 		console.log(addItems, itemsList);
 		//addItems.addEventListener("submit", ()=>{});
 	}
 	addItem(e) {
 		const text = document.querySelector("[name=item]");
+		//console.log(text.value);
 		const item = {
 			text: text.value,
 			done: false
 		};
 		//console.log(item);
-		text.value = "";
-		this.setState((state, item) => {
-			items: [...state.items, item];
-		});
-		console.log(this.state);
-		//this.populateList(this.state.items, this.state.items_list);
+		let tmpState = null;
+		tmpState = this.state.items;
+		tmpState.push(item);
+		//console.log(this.state.items);
+		this.setState(() => ({ items: tmpState }), console.log(this.state.items));
 	}
-	populateList(plates = [], platesList) {
-		platesList.innerHTML = plates
-			.map((plate, i) => {
-				return `
-			<li>
-			<label for="">${plate.text}</label>
-			</li>
-			`;
-			})
-			.join("");
+	removeItem(event, item) {
+		//console.log(event, item);
+		let tmpState = null;
+		tmpState = this.state.items;
+
+		tmpState.pop(item.item);
+
+		this.setState(() => ({ items: tmpState }), console.log(this.state.items));
 	}
 
 	render() {
 		// eslint-disable-line no-console
+		let confirm;
 		const { volume } = this.state;
 		const { playbackRate } = this.state;
 
@@ -62,17 +62,40 @@ export default class LocalStorageAndEventDelegation extends React.Component {
 					<p />
 					<ul className="plates">
 						<li>Loading Tapas...</li>
-						{this.state.items.forEach(item => {
-							return <label>{item.text}</label>;
+						{this.state.items.map((item, key) => {
+							return (
+								<li key={key} style={{ color: "black" }}>
+									{item.text}
+									<div
+										style={{
+											float: "right",
+											textAlign: "right",
+											display: "flex",
+											marginLeft: "auto"
+										}}>
+										<div style={{ float: "left", maxWidth: "70%" }}>
+											{item.done ? "Complete" : "Pending"}
+										</div>
+										<div
+											style={{ float: "right", padding: "0 0 0 5px" }}
+											type="button"
+											onClick={event => {
+												this.removeItem(event, item);
+											}}>
+											<div className="xButton">X</div>
+										</div>
+									</div>
+								</li>
+							);
 						})}
 					</ul>
 					<form className="add-items">
 						<input type="text" name="item" placeholder="Item Name" required />
 						<input
-							type="submit"
+							type="button"
 							value="+ Add Item"
 							onClick={e => {
-								e.preventDefault();
+								//e.preventDefault();
 								this.addItem(e);
 							}}
 						/>
