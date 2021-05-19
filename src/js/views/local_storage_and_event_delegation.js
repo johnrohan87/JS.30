@@ -37,6 +37,7 @@ export default class LocalStorageAndEventDelegation extends React.Component {
 		tmpState.push(item);
 		//console.log(this.state.items);
 		this.setState(() => ({ items: tmpState }), console.log(this.state.items));
+		this.state.add_items.reset();
 	}
 	removeItem(event, item) {
 		//console.log(event, item);
@@ -76,13 +77,20 @@ export default class LocalStorageAndEventDelegation extends React.Component {
 										<div style={{ float: "left", maxWidth: "70%" }}>
 											{item.done ? "Complete" : "Pending"}
 										</div>
-										<div
-											style={{ float: "right", padding: "0 0 0 5px" }}
-											type="button"
-											onClick={event => {
-												this.removeItem(event, item);
-											}}>
-											<div className="xButton">X</div>
+										<div className="MyCheckbox" style={{ float: "right", margin: "0 !important" }}>
+											<input
+												type="checkbox"
+												key={key}
+												style={{ display: "inline", margin: "auto 5px auto 5px" }}
+											/>
+											<div
+												className="xButton"
+												type="button"
+												onClick={event => {
+													this.removeItem(event, item);
+												}}>
+												X
+											</div>
 										</div>
 									</div>
 								</li>

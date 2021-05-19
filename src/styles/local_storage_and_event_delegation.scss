@@ -1,3 +1,15 @@
+.updateBG{
+  min-height: 100vh;
+  background-repeat: no-repeat !important;
+}
+
+.MyCheckbox{
+  width: auto;
+  min-width: 10px;
+  display: flex;
+  flex-direction: row;
+}
+
 .xButton:hover{
   border: 3px solid red;
 }
@@ -33,9 +45,10 @@ svg {
   padding: 20px;
   max-width: 350px;
   background: rgba(255, 255, 255, 0.95);
+  
   box-shadow: 0 0 0 10px rgba(0, 0, 0, 0.1);
-  margin: auto;
-  min-height: 100vh;
+  margin: 10vh auto 10vh auto;
+  min-height: 50vh;
   box-sizing: border-box;
   //display: flex;
   justify-content: center;
