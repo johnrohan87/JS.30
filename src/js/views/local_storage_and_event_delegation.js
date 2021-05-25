@@ -22,10 +22,10 @@ export default class LocalStorageAndEventDelegation extends React.Component {
 		const addItems = document.querySelector(".add-items");
 		const itemsList = document.querySelector(".plates");
 		this.setState(() => ({ add_items: addItems, items_list: itemsList }));
-		console.log(addItems, itemsList);
+		//console.log(addItems, itemsList);
 		let tmpLS = localStorage.getItem("myData");
 		if (tmpLS === null) {
-			console.log("myData is null");
+			//console.log("myData is null");
 		} else {
 			//console.log("false = " + JSON.parse(tmpLS));
 			this.setState({ items: JSON.parse(tmpLS) });
@@ -49,18 +49,19 @@ export default class LocalStorageAndEventDelegation extends React.Component {
 		this.state.add_items.reset();
 	}
 	removeItem(event, item) {
-		//console.log(event, item);
+		//console.log(event, item, event.target, event.target.getAttribute("data-key"));
 		let tmpState = null;
 		tmpState = this.state.items;
 
-		tmpState.pop(item.item);
+		//tmpState.pop(item.item);
+		tmpState.splice(event.target.getAttribute("data-key"), 1);
 
 		this.setState(() => ({ items: tmpState }));
 		localStorage.setItem("myData", JSON.stringify(this.state.items));
 	}
 	handleChange(item) {
 		item.done = !item.done;
-		console.log(item);
+		//console.log(item);
 		this.setState(previousState => previousState);
 		localStorage.setItem("myData", JSON.stringify(this.state.items));
 	}
@@ -79,10 +80,13 @@ export default class LocalStorageAndEventDelegation extends React.Component {
 			<div className="updateBG" style={{ background: `url("${ohlala}")` }}>
 				<h1 className="text-center mt-5 bg-primary card">Local Storage And Event Delegation</h1>
 				<div className="wrapper">
-					<h2>LOCAL TAPAS</h2>
-					<p />
+					<h2>To Do List</h2>
+					<p>
+						Click item to toggle completion
+						<br />X removes the To Do
+					</p>
+
 					<ul className="plates">
-						<li>Loading Tapas...</li>
 						{this.state.items.map((item, key) => {
 							return (
 								<li key={key} style={{ color: "black" }}>
@@ -102,12 +106,14 @@ export default class LocalStorageAndEventDelegation extends React.Component {
 												onChange={() => {
 													this.handleChange(this);
 												}}
+												onClick={() => this.handleChange(item)}
 												style={{ height: "5px" }}
 											/>
-											<label />
+											<label onClick={() => this.handleChange(item)} />
 											<div
 												className="xButton"
 												type="button"
+												data-key={key}
 												onClick={event => {
 													this.removeItem(event, item);
 												}}>
