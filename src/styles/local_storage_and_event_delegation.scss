@@ -90,7 +90,8 @@ h2 {
 }
 
 .plates input + label:before {
-  content: "⬜️";
+  content: "";
+  //content: "⬜️";
   margin-right: 10px;
 }
 

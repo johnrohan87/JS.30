@@ -16,12 +16,20 @@ export default class LocalStorageAndEventDelegation extends React.Component {
 			items_list: null,
 			items: []
 		};
+		this.handleChange = this.handleChange.bind(this);
 	}
 	componentDidMount(props) {
 		const addItems = document.querySelector(".add-items");
 		const itemsList = document.querySelector(".plates");
 		this.setState(() => ({ add_items: addItems, items_list: itemsList }));
 		console.log(addItems, itemsList);
+		let tmpLS = localStorage.getItem("myData");
+		if (tmpLS === null) {
+			console.log("myData is null");
+		} else {
+			//console.log("false = " + JSON.parse(tmpLS));
+			this.setState({ items: JSON.parse(tmpLS) });
+		}
 		//addItems.addEventListener("submit", ()=>{});
 	}
 	addItem(e) {
@@ -36,7 +44,8 @@ export default class LocalStorageAndEventDelegation extends React.Component {
 		tmpState = this.state.items;
 		tmpState.push(item);
 		//console.log(this.state.items);
-		this.setState(() => ({ items: tmpState }), console.log(this.state.items));
+		this.setState(() => ({ items: tmpState }));
+		localStorage.setItem("myData", JSON.stringify(this.state.items));
 		this.state.add_items.reset();
 	}
 	removeItem(event, item) {
@@ -46,7 +55,14 @@ export default class LocalStorageAndEventDelegation extends React.Component {
 
 		tmpState.pop(item.item);
 
-		this.setState(() => ({ items: tmpState }), console.log(this.state.items));
+		this.setState(() => ({ items: tmpState }));
+		localStorage.setItem("myData", JSON.stringify(this.state.items));
+	}
+	handleChange(item) {
+		item.done = !item.done;
+		console.log(item);
+		this.setState(previousState => previousState);
+		localStorage.setItem("myData", JSON.stringify(this.state.items));
 	}
 
 	render() {
@@ -54,6 +70,10 @@ export default class LocalStorageAndEventDelegation extends React.Component {
 		let confirm;
 		const { volume } = this.state;
 		const { playbackRate } = this.state;
+
+		//<div style={{ float: "left", maxWidth: "70%" }}>
+		//									{item.done ? "Complete" : "Pending"}
+		//								</div>
 
 		return (
 			<div className="updateBG" style={{ background: `url("${ohlala}")` }}>
@@ -66,7 +86,7 @@ export default class LocalStorageAndEventDelegation extends React.Component {
 						{this.state.items.map((item, key) => {
 							return (
 								<li key={key} style={{ color: "black" }}>
-									{item.text}
+									<label onClick={() => this.handleChange(item)}>{item.text}</label>
 									<div
 										style={{
 											float: "right",
@@ -74,15 +94,17 @@ export default class LocalStorageAndEventDelegation extends React.Component {
 											display: "flex",
 											marginLeft: "auto"
 										}}>
-										<div style={{ float: "left", maxWidth: "70%" }}>
-											{item.done ? "Complete" : "Pending"}
-										</div>
 										<div className="MyCheckbox" style={{ float: "right", margin: "0 !important" }}>
 											<input
 												type="checkbox"
 												key={key}
-												style={{ display: "inline", margin: "auto 5px auto 5px" }}
+												checked={item.done}
+												onChange={() => {
+													this.handleChange(this);
+												}}
+												style={{ height: "5px" }}
 											/>
+											<label />
 											<div
 												className="xButton"
 												type="button"
