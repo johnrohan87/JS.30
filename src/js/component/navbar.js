@@ -143,6 +143,12 @@ export const Navbar = () => {
 									onClick={() => CloseMenus()}>
 									Local Storage And Event Delegation
 								</Link>
+								<Link
+									className="dropdown-item"
+									to="/css_text_shadow_mouse_move_effect"
+									onClick={() => CloseMenus()}>
+									CSS Text Shadow Mouse Move Effect
+								</Link>
 								{/*<div className="dropdown-divider" />
 								<a className="dropdown-item" href="/">
 									Something else here

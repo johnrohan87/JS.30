@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
 
 import { Home } from "./views/home";
+import cssTextShadowMouseMoveEffect from "./views/css_text_shadow_mouse_move_effect";
 import LocalStorageAndEventDelegation from "./views/local_storage_and_event_delegation";
 import SlideInOnScroll from "./views/slide_in_on_scroll";
 import KeySequenceDetection from "./views/key_sequence_detection";
@@ -44,45 +45,28 @@ const Layout = () => {
 						<Route exact path="/single/:theid">
 							<Single />
 						</Route>
-						<Route exact path="/drum_kit">
-							<DrumKit />
-						</Route>
-						<Route exact path="/clock">
-							<Clock />
-						</Route>
-						<Route exact path="/update_css_js">
-							<UpdateCssJs />
-						</Route>
-						<Route exact path="/array_cardio">
-							<ArrayCardio />
-						</Route>
-						<Route exact path="/flex_panels">
-							<FlexPanels />
-						</Route>
-						<Route exact path="/type_ahead">
-							<TypeAhead />
-						</Route>
-						<Route exact path="/html5_canvas">
-							<HTML5Canvas />
-						</Route>
-						<Route exact path="/console_tricks">
-							<ConsoleTricks />
-						</Route>
-						<Route exact path="/check_multiple_checkboxes">
-							<CheckMultipleCheckboxes />
-						</Route>
-						<Route exact path="/custom_video_player">
-							<CustomVideoPlayer />
-						</Route>
-						<Route exact path="/key_sequence_detection">
-							<KeySequenceDetection />
-						</Route>
-						<Route exact path="/slide_in_on_scroll">
-							<SlideInOnScroll />
-						</Route>
-						<Route exact path="/local_storage_and_event_delegation">
-							<LocalStorageAndEventDelegation />
-						</Route>
+						<Route exact path="/drum_kit" component={DrumKit} />
+						<Route exact path="/clock" component={Clock} />
+						<Route exact path="/update_css_js" component={UpdateCssJs} />
+						<Route exact path="/array_cardio" component={ArrayCardio} />
+						<Route exact path="/flex_panels" component={FlexPanels} />
+						<Route exact path="/type_ahead" component={TypeAhead} />
+						<Route exact path="/html5_canvas" component={HTML5Canvas} />
+						<Route exact path="/console_tricks" component={ConsoleTricks} />
+						<Route exact path="/check_multiple_checkboxes" component={CheckMultipleCheckboxes} />
+						<Route exact path="/custom_video_player" component={CustomVideoPlayer} />
+						<Route exact path="/key_sequence_detection" component={KeySequenceDetection} />
+						<Route exact path="/slide_in_on_scroll" component={SlideInOnScroll} />
+						<Route
+							exact
+							path="/local_storage_and_event_delegation"
+							component={LocalStorageAndEventDelegation}
+						/>
+						<Route
+							exact
+							path="/css_text_shadow_mouse_move_effect"
+							component={cssTextShadowMouseMoveEffect}
+						/>
 						<Route>
 							<h1>Not found!</h1>
 						</Route>
