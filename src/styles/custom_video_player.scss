@@ -1,5 +1,5 @@
-
-html {
+.CustomVideoPlayer{
+  html {
   box-sizing: border-box;
 }
 
@@ -26,6 +26,7 @@ body {
   position: relative;
   font-size: 0;
   overflow: hidden;
+  margin: 0 auto 0 auto;
 }
 
 /* This css is only applied when fullscreen is active. */
@@ -165,4 +166,5 @@ input[type=range]::-moz-range-thumb {
 }
 .updateBG{
   color: white;
+}
 }

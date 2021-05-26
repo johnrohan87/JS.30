@@ -77,7 +77,7 @@ export default class LocalStorageAndEventDelegation extends React.Component {
 		//								</div>
 
 		return (
-			<div className="updateBG" style={{ background: `url("${ohlala}")` }}>
+			<div className="LocalStorageAndEventDelegation updateBG" style={{ background: `url("${ohlala}")` }}>
 				<h1 className="text-center mt-5 bg-primary card">Local Storage And Event Delegation</h1>
 				<div className="wrapper">
 					<h2>To Do List</h2>

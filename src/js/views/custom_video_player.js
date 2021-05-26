@@ -90,7 +90,7 @@ export default class CustomVideoPlayer extends React.Component {
 		var result = date.toISOString().substr(11, 8);
 
 		return (
-			<div className="updateBG">
+			<div className="CustomVideoPlayer updateBG">
 				<h2 className="text-center mt-5 bg-primary card">Custom Video Player</h2>
 				<div className="player" ref={this.player}>
 					<video

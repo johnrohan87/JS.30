@@ -46,7 +46,7 @@ export default class cssTextShadowMouseMoveEffect extends React.Component {
 
 		return (
 			<div
-				className="hero updateBG"
+				className="cssTextShadowMouseMoveEffect hero updateBG"
 				ref={this.heroRef}
 				onMouseMove={e => {
 					this.debounce(this.shadow(e));

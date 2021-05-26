@@ -38,7 +38,7 @@ export default class KeySequenceDetection extends React.Component {
 		const { playbackRate } = this.state;
 
 		return (
-			<div className="updateBG">
+			<div className="KeySequenceDetection updateBG">
 				<h2 className="text-center mt-5 bg-primary card">Key Sequence Detection</h2>
 				<div>HINT: whats my name?</div>
 				<div>The last key pressed {this.state.currentKey}</div>

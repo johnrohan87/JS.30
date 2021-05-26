@@ -69,7 +69,7 @@ export default class SlideInOnScroll extends React.Component {
 		const { playbackRate } = this.state;
 
 		return (
-			<div className="updateBG">
+			<div className="SlideInOnScroll updateBG">
 				<h2 className="text-center mt-5 bg-primary card">Slide In On Scroll</h2>
 				<div className="site-wrap">
 					<h1>Slide in on Scroll</h1>

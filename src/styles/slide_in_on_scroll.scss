@@ -1,4 +1,5 @@
-html {
+.SlideInOnScroll{
+  html {
   box-sizing: border-box;
   background: #ffc600;
   font-family: 'helvetica neue';
@@ -12,7 +13,7 @@ body {
 .updateBG{
   
   img{
-    filter: blur(0) !important;
+    //filter: blur(0) !important;
   }
 }
 
@@ -59,4 +60,5 @@ h1 {
 .slide-in.active {
   opacity: 1;
   transform: translateX(0%) scale(1);
+}
 }
