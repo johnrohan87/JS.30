@@ -87,7 +87,7 @@ export default class cssTextShadowMouseMoveEffect extends React.Component {
 				onMouseMove={e => {
 					this.debounce(this.shadow(e));
 				}}
-				onTouchStart={e => this.shadowTouch(e)}>
+				onTouchMove={e => this.shadowTouch(e)}>
 				<h1 className="text-center mt-5 bg-primary card">CSS Text Shadow Mouse Move Effect</h1>
 				<h2 contentEditable ref={this.textRef}>
 					🔥WOAH!
