@@ -17,13 +17,29 @@ export default class cssTextShadowMouseMoveEffect extends React.Component {
 			items: []
 		};
 		this.heroRef = createRef();
+		this.textRef = createRef();
 	}
 	componentDidMount(props) {}
 
 	shadow(e) {
+		const walk = 100; //100px
 		const { offsetWidth: width, offsetHeight: height } = this.heroRef.current;
 		let { offsetX: x, offsetY: y } = e.nativeEvent;
-		console.log(width, height, x, y);
+		//console.log(width, height, x, y);
+		//console.log(this.heroRef.current, e.target);
+		if (this.heroRef.current !== e.target) {
+			x = x + e.target.offsetLeft;
+			y = y + e.target.offsetTop;
+		}
+		//console.log(x, y);
+		const xWalk = Math.round((x / width) * walk - walk / 2);
+		const yWalk = Math.round((y / height) * walk - walk / 2);
+		//console.log(xWalk, yWalk);
+		this.textRef.current.style.textShadow = `
+		${xWalk}px ${yWalk}px 0 rgba(255,0,255,0.7),
+		${xWalk * -1}px ${yWalk}px 0 rgba(0,255,255,0.7),
+		${yWalk}px ${xWalk * -1}px 0 rgba(0,255,0,0.7),
+		${yWalk * -1}px ${xWalk}px 0 rgba(0,0,255,0.7)`;
 	}
 	debounce(func, wait = 50, immediate = true) {
 		var timeout;
@@ -52,7 +68,9 @@ export default class cssTextShadowMouseMoveEffect extends React.Component {
 					this.debounce(this.shadow(e));
 				}}>
 				<h1 className="text-center mt-5 bg-primary card">CSS Text Shadow Mouse Move Effect</h1>
-				<h2 contentEditable>🔥WOAH!</h2>
+				<h2 contentEditable ref={this.textRef}>
+					🔥WOAH!
+				</h2>
 			</div>
 		);
 	}
