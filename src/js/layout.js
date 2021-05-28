@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
 
 import { Home } from "./views/home";
+import { VideoReduce } from "./views/video_reduce";
 import { SortWithoutArticles } from "./views/sort_without_articles";
 import cssTextShadowMouseMoveEffect from "./views/css_text_shadow_mouse_move_effect";
 import LocalStorageAndEventDelegation from "./views/local_storage_and_event_delegation";
@@ -69,6 +70,7 @@ const Layout = () => {
 							component={cssTextShadowMouseMoveEffect}
 						/>
 						<Route exact path="/sort_without_articles" component={SortWithoutArticles} />
+						<Route exact path="/video_reduce" component={VideoReduce} />
 						<Route>
 							<h1>Not found!</h1>
 						</Route>

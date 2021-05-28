@@ -155,6 +155,9 @@ export const Navbar = () => {
 									onClick={() => CloseMenus()}>
 									Sort Without Articles
 								</Link>
+								<Link className="dropdown-item" to="/video_reduce" onClick={() => CloseMenus()}>
+									Adding Up Times with Reduce
+								</Link>
 								{/*<div className="dropdown-divider" />
 								<a className="dropdown-item" href="/">
 									Something else here
