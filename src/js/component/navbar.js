@@ -158,6 +158,9 @@ export const Navbar = () => {
 								<Link className="dropdown-item" to="/video_reduce" onClick={() => CloseMenus()}>
 									Adding Up Times with Reduce
 								</Link>
+								<Link className="dropdown-item" to="/webcam_fun" onClick={() => CloseMenus()}>
+									WebCam Fun
+								</Link>
 								{/*<div className="dropdown-divider" />
 								<a className="dropdown-item" href="/">
 									Something else here
