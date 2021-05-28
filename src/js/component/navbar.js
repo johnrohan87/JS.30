@@ -149,6 +149,12 @@ export const Navbar = () => {
 									onClick={() => CloseMenus()}>
 									CSS Text Shadow Mouse Move Effect
 								</Link>
+								<Link
+									className="dropdown-item"
+									to="/sort_without_articles"
+									onClick={() => CloseMenus()}>
+									Sort Without Articles
+								</Link>
 								{/*<div className="dropdown-divider" />
 								<a className="dropdown-item" href="/">
 									Something else here

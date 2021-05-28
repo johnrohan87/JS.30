@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
 
 import { Home } from "./views/home";
+import { SortWithoutArticles } from "./views/sort_without_articles";
 import cssTextShadowMouseMoveEffect from "./views/css_text_shadow_mouse_move_effect";
 import LocalStorageAndEventDelegation from "./views/local_storage_and_event_delegation";
 import SlideInOnScroll from "./views/slide_in_on_scroll";
@@ -67,6 +68,7 @@ const Layout = () => {
 							path="/css_text_shadow_mouse_move_effect"
 							component={cssTextShadowMouseMoveEffect}
 						/>
+						<Route exact path="/sort_without_articles" component={SortWithoutArticles} />
 						<Route>
 							<h1>Not found!</h1>
 						</Route>
