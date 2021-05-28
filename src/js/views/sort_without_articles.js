@@ -32,7 +32,7 @@ export const SortWithoutArticles = () => {
 		sortedBands = bands.sort((item1, item2) => (strip(item1) > strip(item2) ? 1 : -1));
 		let result = sortedBands.map((band, key) => <li key={key}>{band}</li>);
 		setBandsList(result);
-		console.log(result);
+		//console.log(result);
 	}, []);
 
 	// eslint-disable-line no-console
