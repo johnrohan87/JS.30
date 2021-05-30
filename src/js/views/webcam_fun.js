@@ -1,6 +1,6 @@
 import React, { createRef, useRef, useEffect, useState, Component } from "react";
 import ReactDOM from "react-dom";
-import PropTypes from "prop-types";
+import PropTypes, { func } from "prop-types";
 import "../../styles/webcam_fun.scss";
 import { Redirect, withRouter } from "react-router-dom/cjs/react-router-dom.min";
 
@@ -11,6 +11,7 @@ export const WebcamFun = () => {
 	const snap = useRef(null);
 	let ctx = null;
 	const [photos, setPhotos] = useState({ album: [] });
+	const [photoText, setPhotoText] = useState("");
 
 	useEffect(() => {
 		// eslint-disable-line no-console
@@ -43,6 +44,11 @@ export const WebcamFun = () => {
 
 		return setInterval(() => {
 			ctx.drawImage(video, 0, 0, width, height);
+			let pixels = ctx.getImageData(0, 0, width, height);
+			//pixels = redEffect(pixels);
+			pixels = rgbSplit(pixels);
+			ctx.globalAlpha = 0.1;
+			ctx.putImageData(pixels, 0, 0);
 		}, 16);
 	}
 	function takePhoto() {
@@ -58,9 +64,31 @@ export const WebcamFun = () => {
 		() => setPhotos({ tmpState });
 		//console.log(tmpState);
 		console.log(photos);
+		let result = photos.album.map((photo, key) => {
+			return (
+				<a key={key} href={photo} download={"webcam_fun" + key}>
+					<img src={photo} alt={"webcam_fun" + key} />
+				</a>
+			);
+		});
+		//console.log(result);
+		setPhotoText(result);
 	}
-	function returnMap(e) {
-		console.log(e);
+	function redEffect(pixels) {
+		for (let i = 0; i < pixels.data.length; i += 4) {
+			pixels.data[i] = pixels.data[i] + 100; //red
+			pixels.data[i + 1] = pixels.data[i + 1] - 50; //red
+			pixels.data[i + 2] = pixels.data[i + 2] * 0.5; //red
+		}
+		return pixels;
+	}
+	function rgbSplit(pixels) {
+		for (let i = 0; i < pixels.data.length; i += 4) {
+			pixels.data[i - 150] = pixels.data[i] + 100; //red
+			pixels.data[i + 100] = pixels.data[i + 1] - 50; //red
+			pixels.data[i - 150] = pixels.data[i + 2] * 0.5; //red
+		}
+		return pixels;
 	}
 
 	return (
@@ -91,7 +119,7 @@ export const WebcamFun = () => {
 
 				<canvas className="photo" ref={canvas} />
 				<video className="player" onCanPlay={() => paintToCanvas()} />
-				<div className="strip">{() => photos.returnMap(photos)}</div>
+				<div className="strip">{photoText}</div>
 			</div>
 
 			<audio
