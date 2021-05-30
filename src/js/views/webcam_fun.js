@@ -93,7 +93,7 @@ export const WebcamFun = () => {
 	function greenScreen(pixels){
 		const levels = {}
 
-		[...doc]
+		//[...doc]
 	}
 
 	return (
