@@ -90,8 +90,8 @@ export const WebcamFun = () => {
 		}
 		return pixels;
 	}
-	function greenScreen(pixels){
-		const levels = {}
+	function greenScreen(pixels) {
+		const levels = {};
 
 		//[...doc]
 	}
