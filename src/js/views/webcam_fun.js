@@ -1,23 +1,66 @@
-import React, { createRef, useEffect, useState, Component } from "react";
+import React, { createRef, useRef, useEffect, useState, Component } from "react";
 import ReactDOM from "react-dom";
 import PropTypes from "prop-types";
 import "../../styles/webcam_fun.scss";
 import { Redirect, withRouter } from "react-router-dom/cjs/react-router-dom.min";
 
 export const WebcamFun = () => {
+	let video = null;
+	const canvas = useRef(null);
+	let strip = null;
+	const snap = useRef(null);
+	let ctx = null;
+	const [photos, setPhotos] = useState({ album: [] });
+
 	useEffect(() => {
 		// eslint-disable-line no-console
-		const video = document.querySelector(".player");
-		const canvas = document.querySelector(".photo");
-		const ctx = canvas.getContext("2d");
-		const strip = document.querySelector(".strip");
-		const snap = document.querySelector(".snap");
+		video = document.querySelector(".player");
+		//canvas = document.querySelector(".photo");
+		ctx = canvas.current.getContext("2d");
+		//strip = document.querySelector(".strip");
+		//snap = document.querySelector(".snap");
+		getVideo();
 	}, []);
 
 	function getVideo() {
-		navigator.mediaDevices.getUserMedia({ video: true, audio: false }).then(localMediaStream => {
-			console.log(localMediaStream);
-		});
+		navigator.mediaDevices
+			.getUserMedia({ video: true, audio: false })
+			.then(localMediaStream => {
+				console.log(localMediaStream);
+				video.srcObject = localMediaStream;
+				video.play();
+			})
+			.catch(err => {
+				console.error("OH NO!!!", err);
+			});
+	}
+	function paintToCanvas() {
+		const width = video.videoWidth;
+		const height = video.videoHeight;
+		//console.log(width, height);
+		canvas.current.width = width;
+		canvas.current.height = height;
+
+		return setInterval(() => {
+			ctx.drawImage(video, 0, 0, width, height);
+		}, 16);
+	}
+	function takePhoto() {
+		//console.log(snap.current);
+		snap.current.currentTime = 0;
+		snap.current.play();
+
+		const data = canvas.current.toDataURL("image/jpeg");
+
+		let tmpState = photos;
+		tmpState.album.push(data);
+
+		() => setPhotos({ tmpState });
+		//console.log(tmpState);
+		console.log(photos);
+	}
+	function returnMap(e) {
+		console.log(e);
 	}
 
 	return (
@@ -26,7 +69,7 @@ export const WebcamFun = () => {
 
 			<div className="photobooth">
 				<div className="controls">
-					<button>Take Photo</button>
+					<button onClick={() => takePhoto()}>Take Photo</button>
 
 					<div className="rgb">
 						<label htmlFor="rmin">Red Min:</label>
@@ -46,13 +89,14 @@ export const WebcamFun = () => {
 					</div>
 				</div>
 
-				<canvas className="photo" />
-				<video className="player" />
-				<div className="strip" />
+				<canvas className="photo" ref={canvas} />
+				<video className="player" onCanPlay={() => paintToCanvas()} />
+				<div className="strip">{() => photos.returnMap(photos)}</div>
 			</div>
 
 			<audio
 				className="snap"
+				ref={snap}
 				src="https://github.com/wesbos/JavaScript30/blob/master/19%20-%20Webcam%20Fun/snap.mp3?raw=true"
 				hidden
 			/>
