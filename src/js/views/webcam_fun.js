@@ -90,6 +90,11 @@ export const WebcamFun = () => {
 		}
 		return pixels;
 	}
+	function greenScreen(pixels){
+		const levels = {}
+
+		[...doc]
+	}
 
 	return (
 		<div className="WebcamFun w-100">
