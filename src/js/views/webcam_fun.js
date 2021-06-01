@@ -37,12 +37,12 @@ export const WebcamFun = () => {
 		navigator.mediaDevices
 			.getUserMedia({ video: true, audio: false })
 			.then(localMediaStream => {
-				console.log(localMediaStream);
+				//console.log(localMediaStream);
 				video.srcObject = localMediaStream;
 				video.play();
 			})
 			.catch(err => {
-				console.error("OH NO!!!", err);
+				console.error("OH NO!!!", err); // eslint-disable-line no-console
 			});
 	}
 	function paintToCanvas() {
@@ -77,7 +77,7 @@ export const WebcamFun = () => {
 
 		() => setPhotos({ tmpState });
 		//console.log(tmpState);
-		console.log(photos);
+		//console.log(photos);
 		let result = photos.album.map((photo, key) => {
 			return (
 				<a key={key} href={photo} download={"webcam_fun" + key}>

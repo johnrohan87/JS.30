@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
 
 import { Home } from "./views/home";
+import { NativeSpeechRecognition } from "./views/native_speech_recognition";
 import { WebcamFun } from "./views/webcam_fun";
 import { VideoReduce } from "./views/video_reduce";
 import { SortWithoutArticles } from "./views/sort_without_articles";
@@ -73,6 +74,7 @@ const Layout = () => {
 						<Route exact path="/sort_without_articles" component={SortWithoutArticles} />
 						<Route exact path="/video_reduce" component={VideoReduce} />
 						<Route exact path="/webcam_fun" component={WebcamFun} />
+						<Route exact path="/native_speech_recognition" component={NativeSpeechRecognition} />
 						<Route>
 							<h1>Not found!</h1>
 						</Route>

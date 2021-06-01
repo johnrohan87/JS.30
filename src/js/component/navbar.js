@@ -161,6 +161,12 @@ export const Navbar = () => {
 								<Link className="dropdown-item" to="/webcam_fun" onClick={() => CloseMenus()}>
 									WebCam Fun
 								</Link>
+								<Link
+									className="dropdown-item"
+									to="/native_speech_recognition"
+									onClick={() => CloseMenus()}>
+									Native Speech Recognition
+								</Link>
 								{/*<div className="dropdown-divider" />
 								<a className="dropdown-item" href="/">
 									Something else here
